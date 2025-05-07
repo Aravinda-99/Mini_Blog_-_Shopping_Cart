@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require_once '../connection.php';
 include '../includes/header.php';
 
@@ -94,8 +94,8 @@ $total = 0;
                             <tr>
                                 <td><?php echo htmlspecialchars($row['name']); ?></td>
                                 <td><?php echo $row['quantity']; ?></td>
-                                <td>$<?php echo number_format($row['price'], 2); ?></td>
-                                <td>$<?php echo number_format($row['subtotal'], 2); ?></td>
+                                <td>Rs.<?php echo number_format($row['price'], 2); ?></td>
+                                <td>Rs.<?php echo number_format($row['subtotal'], 2); ?></td>
                             </tr>
                             <?php $total += $row['subtotal']; ?>
                         <?php endwhile; ?>
@@ -103,7 +103,7 @@ $total = 0;
                     <tfoot>
                         <tr>
                             <th colspan="3">Total</th>
-                            <th>$<?php echo number_format($total, 2); ?></th>
+                            <th>RS.<?php echo number_format($total, 2); ?></th>
                         </tr>
                     </tfoot>
                 </table>
