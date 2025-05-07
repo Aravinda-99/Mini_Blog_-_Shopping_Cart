@@ -55,7 +55,7 @@
                 </div>
             </div>
         </footer>
-    </div> <!-- End of .page-wrapper -->
+    </div> 
     <link rel="stylesheet" href="footer.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

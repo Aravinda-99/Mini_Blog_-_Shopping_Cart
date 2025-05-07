@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $content = trim($_POST['content']);
     $user_id = $_SESSION['user_id'];
 
-    // Check if the post belongs to the user
+ 
     $stmt = $conn->prepare('SELECT id FROM posts WHERE id = ? AND user_id = ?');
     $stmt->bind_param('ii', $post_id, $user_id);
     $stmt->execute();
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    // Update the post
+    
     $stmt = $conn->prepare('UPDATE posts SET title = ?, content = ? WHERE id = ? AND user_id = ?');
     $stmt->bind_param('ssii', $title, $content, $post_id, $user_id);
     if ($stmt->execute()) {

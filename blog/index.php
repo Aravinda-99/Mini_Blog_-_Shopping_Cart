@@ -3,7 +3,7 @@
 include '../includes/header.php';
 require_once '../connection.php';
 
-// Add CSS link
+
 echo '<link rel="stylesheet" href="blog.css">';
 
 $sql = "SELECT posts.id, posts.title, LEFT(posts.content, 200) AS snippet, posts.created_at, users.name AS author

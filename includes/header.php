@@ -11,7 +11,7 @@ session_start();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="header.css">
     <style>
-        /* Ensure the entire page takes full height and width */
+        
         html, body {
             height: 100%;
             margin: 0;
@@ -25,65 +25,65 @@ session_start();
         }
 
         main {
-            flex: 1; /* Push footer to the bottom */
+            flex: 1; 
         }
 
-        /* Footer styles */
+        
         footer {
-            margin-top: auto !important; /* Push footer to the bottom */
-            width: 100%; /* Ensure footer spans full width */
-            background: linear-gradient(90deg, #232526 0%, #414345 100%); /* Background gradient */
-            color: #fff; /* Text color */
-            padding: 0; /* Remove default padding */
+            margin-top: auto !important; 
+            width: 100%; 
+            background: linear-gradient(90deg, #232526 0%, #414345 100%); 
+            color: #fff; 
+            padding: 0; 
         }
 
-        /* Wrapper for footer content */
+        
         footer .footer-content {
-            width: 100%; /* Full width */
-            max-width: 1200px; /* Constrain content width like a container */
-            margin: 0 auto; /* Center the content */
-            padding: 3rem 15px; /* Custom padding */
+            width: 100%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 3rem 15px; 
         }
 
-        /* Footer headings */
+        
         footer h6 {
             font-weight: bold;
             margin-bottom: 1rem;
             color: #fff;
         }
 
-        /* Footer links */
+        
         footer ul.list-unstyled li a {
-            color: rgba(255, 255, 255, 0.5); /* text-white-50 equivalent */
+            color: rgba(255, 255, 255, 0.5); 
             text-decoration: none;
         }
 
         footer ul.list-unstyled li a:hover {
-            color: #fff; /* Hover effect */
+            color: #fff; 
             text-decoration: underline;
         }
 
-        /* Horizontal rule */
+        
         footer hr {
             border-color: rgba(255, 255, 255, 0.1);
             margin: 2rem 0;
         }
 
-        /* Social icons */
+        
         footer .social-icons a {
-            color: rgba(255, 255, 255, 0.5); /* text-white-50 equivalent */
-            font-size: 1.25rem; /* fs-5 equivalent */
-            margin-left: 1rem; /* me-3 equivalent */
+            color: rgba(255, 255, 255, 0.5); 
+            font-size: 1.25rem; 
+            margin-left: 1rem; 
             text-decoration: none;
         }
 
         footer .social-icons a:hover {
-            color: #fff; /* Hover effect */
+            color: #fff; 
         }
 
-        /* Copyright text */
+        
         footer .copyright {
-            color: rgba(255, 255, 255, 0.5); /* text-white-50 equivalent */
+            color: rgba(255, 255, 255, 0.5); 
         }
     </style>
 </head>

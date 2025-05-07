@@ -11,19 +11,19 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $message = '';
 
-// Process order submission
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
-    // Start transaction
+    
     $conn->begin_transaction();
     try {
-        // Create order
+        
         $stmt = $conn->prepare('INSERT INTO orders (user_id, total_amount, status) VALUES (?, ?, "pending")');
         $total = 0;
         $stmt->bind_param('id', $user_id, $total);
         $stmt->execute();
         $order_id = $conn->insert_id;
 
-        // Get cart items
+       
         $cart_items = $conn->prepare('SELECT cart.*, products.price, products.name FROM cart 
                                     JOIN products ON cart.product_id = products.id 
                                     WHERE cart.user_id = ?');
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
         $cart_items->execute();
         $result = $cart_items->get_result();
 
-        // Add order items and calculate total
+        
         while ($item = $result->fetch_assoc()) {
             $stmt = $conn->prepare('INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)');
             $stmt->bind_param('iiid', $order_id, $item['product_id'], $item['quantity'], $item['price']);
@@ -39,12 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
             $total += $item['price'] * $item['quantity'];
         }
 
-        // Update order total
+        
         $update_total = $conn->prepare('UPDATE orders SET total_amount = ? WHERE id = ?');
         $update_total->bind_param('di', $total, $order_id);
         $update_total->execute();
 
-        // Clear cart
+        
         $clear_cart = $conn->prepare('DELETE FROM cart WHERE user_id = ?');
         $clear_cart->bind_param('i', $user_id);
         $clear_cart->execute();
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
     }
 }
 
-// Get cart items for display
+
 $sql = "SELECT cart.quantity, products.name, products.price, (cart.quantity * products.price) as subtotal 
         FROM cart 
         JOIN products ON cart.product_id = products.id 

@@ -1,7 +1,5 @@
 <?php
-// Cart page skeleton
-// Fetch and display cart items for the user here
-// ... existing code ... 
+
 
 
 require_once '../connection.php';

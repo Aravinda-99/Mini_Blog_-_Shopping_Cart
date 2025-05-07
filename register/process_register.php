@@ -7,19 +7,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
-    // Validate input
+    
     if (empty($name) || empty($email) || empty($password)) {
         header("Location: ../register/register.php?error=emptyfields");
         exit();
     }
 
-    // Check if email is valid
+    
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         header("Location: ../register/register.php?error=invalidemail");
         exit();
     }
 
-    // Check if email already exists
+    
     $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -30,10 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Hash the password
+    
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert new user
+    
     $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $name, $email, $hashedPassword);
 

@@ -14,7 +14,7 @@ if (!isset($_GET['id'])) {
 $post_id = intval($_GET['id']);
 $user_id = $_SESSION['user_id'];
 
-// Check if the post belongs to the user
+
 $stmt = $conn->prepare('SELECT id FROM posts WHERE id = ? AND user_id = ?');
 $stmt->bind_param('ii', $post_id, $user_id);
 $stmt->execute();
@@ -24,7 +24,7 @@ if ($result->num_rows === 0) {
     exit();
 }
 
-// Delete the post
+
 $stmt = $conn->prepare('DELETE FROM posts WHERE id = ? AND user_id = ?');
 $stmt->bind_param('ii', $post_id, $user_id);
 if ($stmt->execute()) {
