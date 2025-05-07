@@ -1,4 +1,6 @@
     </div> <!-- End of container -->
+    </div> <!-- End of .page-wrapper -->
+    <link rel="stylesheet" href="footer.css">
     <footer style="background: linear-gradient(90deg, #232526 0%, #414345 100%); color: #fff; margin-top: 60px;">
         <div class="container py-5">
             <div class="row align-items-start">
