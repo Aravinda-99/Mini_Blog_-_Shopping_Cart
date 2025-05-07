@@ -1,6 +1,5 @@
 <?php
-// Handle removing a product from the cart
-// ... existing code ... 
+
 
 session_start();
 require_once '../connection.php';

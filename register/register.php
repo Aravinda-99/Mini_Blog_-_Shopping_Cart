@@ -18,7 +18,7 @@
     }
 
     .register-card {
-        max-width: 800px; /* Reduced from 900px */
+        max-width: 800px; 
         width: 100%;
         border: none;
         border-radius: 1rem;
@@ -34,17 +34,17 @@
     }
 
     .register-form-container {
-        padding: 2rem; /* Reduced from 5rem */
+        padding: 2rem; 
         background-color: #fff;
     }
 
     .register-icon {
-        font-size: 1.5rem; /* Reduced from 2rem */
+        font-size: 1.5rem; 
         color: var(--primary-color);
     }
 
     .register-title {
-        font-size: 1.5rem; /* Reduced from 2rem */
+        font-size: 1.5rem; 
         font-weight: 700;
         margin-bottom: 0.5rem;
     }
@@ -61,7 +61,7 @@
     }
 
     .form-control {
- grasa        padding: 0.5rem 0.75rem; /* Smaller padding */
+ grasa        padding: 0.5rem 0.75rem; 
         font-size: 0.9rem;
         border-radius: 0.5rem;
         border: 1px solid #d1d5db;
@@ -119,7 +119,7 @@
         }
 
         .register-image {
-            display: none; /* Hide image on small screens */
+            display: none; 
         }
     }
 </style>

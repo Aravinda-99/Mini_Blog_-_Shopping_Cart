@@ -2,7 +2,7 @@
 require_once '../connection.php';
 include '../includes/header.php';
 
-// Handle search
+
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $where_clause = $search ? "WHERE name LIKE ?" : "";
 $sql = "SELECT * FROM products $where_clause";

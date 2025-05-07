@@ -2,7 +2,7 @@
 require_once '../connection.php';
 include '../includes/header.php';
 
-// Handle form submission
+
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name']);

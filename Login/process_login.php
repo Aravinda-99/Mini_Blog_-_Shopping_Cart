@@ -6,13 +6,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
-    // Validate input
+    
     if (empty($email) || empty($password)) {
         header("Location: ../login/login.php?error=emptyfields");
         exit();
     }
 
-    // Check if user exists
+    
     $stmt = $conn->prepare("SELECT id, name, password FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -25,14 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $user = $result->fetch_assoc();
 
-    // Verify password
+    
     if (password_verify($password, $user['password'])) {
-        // Password is correct, start session
+        
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['name'];
         $_SESSION['name'] = $user['name'];
         
-        // Redirect to main page
+        
         header("Location: ../blog/index.php");
         exit();
     } else {

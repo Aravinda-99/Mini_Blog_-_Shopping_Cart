@@ -3,12 +3,12 @@
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
     <div class="card shadow-lg border-0 rounded-4 overflow-hidden" style="max-width: 900px; width: 100%;">
         <div class="row g-0">
-            <!-- Left: Image -->
+            
             <div class="col-md-6 d-none d-md-block" style="background: #f5f6fa;">
                 <img src="https://media.istockphoto.com/id/2175370570/photo/login-with-username-and-password-secure-access-to-users-personal-information-cyber-security.jpg?s=612x612&w=0&k=20&c=VA4nj5vYW2KVTnGDO5vV-2eDwJehmqPor8QHepT3NJ4="
                      alt="Login Visual" class="img-fluid h-100 w-100" style="object-fit: cover;">
             </div>
-            <!-- Right: Form -->
+            
             <div class="col-md-6 bg-white p-5">
                 <div class="text-center mb-4">
                     <span class="mb-2" style="font-size:2rem; color:#16a34a;"><i class="bi bi-leaf"></i></span>
