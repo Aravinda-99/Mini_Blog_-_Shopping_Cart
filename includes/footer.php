@@ -42,25 +42,7 @@
                     </ul>
                 </div>
             </div>
-            <hr class="my-4" style="border-color:rgba(255,255,255,0.1);">
-            <div class="row text-center text-md-start mb-3">
-                <div class="col-6 col-md-3 mb-3 mb-md-0">
-                    <span class="fw-bold" style="color:#0d6efd; font-size:1.5rem;">500+</span><br>
-                    <span class="text-white-50">Posts</span>
-                </div>
-                <div class="col-6 col-md-3 mb-3 mb-md-0">
-                    <span class="fw-bold" style="color:#0d6efd; font-size:1.5rem;">100+</span><br>
-                    <span class="text-white-50">Products</span>
-                </div>
-                <div class="col-6 col-md-3 mb-3 mb-md-0">
-                    <span class="fw-bold" style="color:#0d6efd; font-size:1.5rem;">1K+</span><br>
-                    <span class="text-white-50">Users</span>
-                </div>
-                <div class="col-6 col-md-3">
-                    <span class="fw-bold" style="color:#0d6efd; font-size:1.5rem;">99%</span><br>
-                    <span class="text-white-50">Satisfaction</span>
-                </div>
-            </div>
+           
             <hr class="my-4" style="border-color:rgba(255,255,255,0.1);">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
                 <div class="mb-2 mb-md-0">
