@@ -53,6 +53,6 @@ $total = 0;
         </tbody>
     </table>
     <h4>Total: Rs.<?php echo number_format($total, 2); ?></h4>
-    <a href="../blog/products.php" class="btn btn-secondary">Continue Shopping</a>
+    <a href="../cart/checkout.php" class="btn btn-secondary">Continue Shopping</a>
 </div>
 <?php include '../includes/footer.php'; ?> 
