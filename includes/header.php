@@ -23,16 +23,16 @@ session_start();
                         <a class="nav-link" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Blog</a>
+                        <a class="nav-link" href="../blog/index.php">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="shop.php">Shop</a>
+                        <a class="nav-link" href="../product/products.php">Shop</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
                     <?php if (isset($_SESSION['user_id'])): ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="cart.php">
+                            <a class="nav-link" href="../cart/cart.php">
                                 <i class="bi bi-cart"></i> Cart
                             </a>
                         </li>
@@ -44,7 +44,7 @@ session_start();
                                 <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                                 <li><a class="dropdown-item" href="my_orders.php">My Orders</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                <li><a class="dropdown-item" href="../login/logout.php">Logout</a></li>
                             </ul>
                         </li>
                     <?php else: ?>

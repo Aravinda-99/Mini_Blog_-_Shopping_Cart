@@ -1,0 +1,111 @@
+.custom-card {
+    background-color: transparent;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.custom-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.custom-card .card-body {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-card .card-title {
+    margin-bottom: 15px;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    color: #333;
+}
+
+.custom-card .card-title a {
+    color: inherit; /* Inherit color from parent */
+    text-decoration: none;
+}
+
+.custom-card .author-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.custom-card .profile-pic {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #555;
+    font-size: 1rem;
+}
+
+.custom-card .profile-pic.show-initial {
+    background-color: #d3d3d3; /* Light gray background */
+    color: #555; /* Darker text color */
+}
+
+/* Display the data-author-initial as content when show-initial class is present */
+.custom-card .profile-pic.show-initial::before {
+    content: attr(data-author-initial);
+    text-transform: uppercase;
+    font-size: 1.5rem; /* Make the letter bigger */
+}
+
+
+.custom-card .author-name {
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.custom-card .post-date {
+    color: #888;
+}
+
+.custom-card .card-text {
+    color: #555 !important;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    flex-grow: 1; /* Allows the text to take up available vertical space */
+}
+
+.custom-card .read-more-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative; /* For potential underline animation */
+    transition: color 0.2s ease-in-out;
+}
+
+.custom-card .read-more-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background-color: #007bff;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease-in-out;
+}
+
+.custom-card .read-more-link:hover {
+    color: #0056b3;
+}
+
+.custom-card .read-more-link:hover::after {
+    transform: scaleX(1);
+}
