@@ -5,7 +5,7 @@
         <div class="row g-0">
             <!-- Left: Image -->
             <div class="col-md-6 d-none d-md-block" style="background: #f5f6fa;">
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+                <img src="https://media.istockphoto.com/id/2175370570/photo/login-with-username-and-password-secure-access-to-users-personal-information-cyber-security.jpg?s=612x612&w=0&k=20&c=VA4nj5vYW2KVTnGDO5vV-2eDwJehmqPor8QHepT3NJ4="
                      alt="Login Visual" class="img-fluid h-100 w-100" style="object-fit: cover;">
             </div>
             <!-- Right: Form -->

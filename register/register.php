@@ -1,17 +1,141 @@
 <?php include '../includes/header.php'; ?>
 
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
-    <div class="card shadow-lg border-0 rounded-4 overflow-hidden" style="max-width: 900px; width: 100%;">
+<style>
+    :root {
+        --primary-color: #16a34a;
+        --secondary-color: #f5f6fa;
+        --text-muted: #6b7280;
+        --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+    }
+
+    .register-container {
+        min-height: 85vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .register-card {
+        max-width: 800px; /* Reduced from 900px */
+        width: 100%;
+        border: none;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: var(--transition);
+    }
+
+    .register-image {
+        height: 100%;
+        object-fit: cover;
+        background-color: var(--secondary-color);
+    }
+
+    .register-form-container {
+        padding: 2rem; /* Reduced from 5rem */
+        background-color: #fff;
+    }
+
+    .register-icon {
+        font-size: 1.5rem; /* Reduced from 2rem */
+        color: var(--primary-color);
+    }
+
+    .register-title {
+        font-size: 1.5rem; /* Reduced from 2rem */
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .register-subtitle {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+
+    .form-label {
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 0.3rem;
+    }
+
+    .form-control {
+ grasa        padding: 0.5rem 0.75rem; /* Smaller padding */
+        font-size: 0.9rem;
+        border-radius: 0.5rem;
+        border: 1px solid #d1d5db;
+        transition: var(--transition);
+    }
+
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+        outline: none;
+    }
+
+    .btn-success {
+        background-color: var(--primary-color);
+        border: none;
+        padding: 0.6rem;
+        font-size: 0.9rem;
+        border-radius: 0.5rem;
+        transition: var(--transition);
+    }
+
+    .btn-success:hover {
+        background-color: #15803d;
+        transform: translateY(-2px);
+    }
+
+    .alert {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+    }
+
+    .text-muted a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .text-muted a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 767.98px) {
+        .register-card {
+            max-width: 100%;
+        }
+
+        .register-form-container {
+            padding: 1.5rem;
+        }
+
+        .register-title {
+            font-size: 1.25rem;
+        }
+
+        .register-image {
+            display: none; /* Hide image on small screens */
+        }
+    }
+</style>
+
+<div class="register-container">
+    <div class="register-card">
         <div class="row g-0">
-            <div class="col-md-6 d-none d-md-block" style="background: #f5f6fa;">
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
-                     alt="Register Visual" class="img-fluid h-100 w-100" style="object-fit: cover;">
+            <div class="col-md-6 d-none d-md-block">
+                <img src="https://media.istockphoto.com/id/2175370570/photo/login-with-username-and-password-secure-access-to-users-personal-information-cyber-security.jpg?s=612x612&w=0&k=20&c=VA4nj5vYW2KVTnGDO5vV-2eDwJehmqPor8QHepT3NJ4="
+                     alt="Register Visual" class="register-image" loading="lazy">
             </div>
-            <div class="col-md-6 bg-white p-5">
-                <div class="text-center mb-4">
-                    <span class="mb-2" style="font-size:2rem; color:#16a34a;"><i class="bi bi-leaf"></i></span>
-                    <h2 class="fw-bold mt-2">Create Account</h2>
-                    <p class="text-muted">Sign up to get started</p>
+            <div class="col-md-6 register-form-container">
+                <div class="text-center mb-3">
+                    <span class="register-icon"><i class="bi bi-leaf"></i></span>
+                    <h2 class="register-title">Create Account</h2>
+                    <p class="register-subtitle">Sign up to get started</p>
                 </div>
                 <?php
                 if (isset($_GET['error'])) {
@@ -24,7 +148,7 @@
                         echo 'Email already taken';
                     } else if ($_GET['error'] == 'sqlerror') {
                         echo 'Database error occurred';
-                    }  else if ($_GET['error'] == 'passwordMismatch') {
+                    } else if ($_GET['error'] == 'passwordMismatch') {
                         echo 'Passwords do not match';
                     }
                     echo '</div>';
@@ -34,27 +158,27 @@
                 }
                 ?>
                 <form action="process_register.php" method="POST">
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Your Name" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>" required>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label for="email" class="form-label">Email Address</label>
-                        <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="you@example.com" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password" required>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                     </div>
-                     <div class="mb-3">
+                    <div class="mb-2">
                         <label for="confirm_password" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control form-control-lg" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
                     </div>
-                    <div class="d-grid mb-3">
-                        <button type="submit" class="btn btn-success btn-lg">Sign Up</button>
+                    <div class="d-grid mb-2">
+                        <button type="submit" class="btn btn-success">Sign Up</button>
                     </div>
                     <div class="text-center">
-                        <span class="text-muted">Already have an account? <a href="../login/login.php" class="text-success fw-bold">Sign In</a></span>
+                        <span class="text-muted">Already have an account? <a href="../login/login.php">Sign In</a></span>
                     </div>
                 </form>
             </div>
