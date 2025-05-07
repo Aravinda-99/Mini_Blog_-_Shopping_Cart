@@ -116,7 +116,7 @@ $total = 0;
         </div>
     <?php else: ?>
         <div class="alert alert-info">Your cart is empty.</div>
-        <a href="../blog/products.php" class="btn btn-primary">Continue Shopping</a>
+        <a href="../product/products.php" class="btn btn-primary">Continue Shopping</a>
     <?php endif; ?>
 </div>
 
