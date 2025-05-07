@@ -31,5 +31,5 @@ if (isset($_POST['product_id'])) {
         $insert->execute();
     }
 }
-header('Location: ../product/products.php');
+header('Location: ../product/products.php?added=success');
 exit(); 

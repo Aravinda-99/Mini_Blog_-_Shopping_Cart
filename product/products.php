@@ -18,6 +18,9 @@ if ($search) {
 }
 ?>
 <div class="container mt-5">
+    <?php if (isset($_GET['added']) && $_GET['added'] === 'success'): ?>
+        <div class="alert alert-success">Product added to cart successfully!</div>
+    <?php endif; ?>
     <h2 class="mb-4">Products</h2>
     <form class="d-flex mb-4" method="GET">
         <input type="text" name="search" class="form-control me-2" placeholder="Search products..." value="<?php echo htmlspecialchars($search); ?>">
