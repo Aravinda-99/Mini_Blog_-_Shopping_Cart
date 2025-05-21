@@ -103,3 +103,82 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 Design the system to handle form validation, including checking for valid dates and 
 ensuring users are 21+.
+
+
+
+<div class="register-container">
+    <div class="register-card">
+        <div class="row g-0">
+            <div class="col-md-6 d-none d-md-block">
+                <img src="https://media.istockphoto.com/id/2175370570/photo/login-with-username-and-password-secure-access-to-users-personal-information-cyber-security.jpg?s=612x612&w=0&k=20&c=VA4nj5vYW2KVTnGDO5vV-2eDwJehmqPor8QHepT3NJ4="
+                     alt="Register Visual" class="register-image" loading="lazy">
+            </div>
+            <div class="col-md-6 register-form-container">
+                <div class="text-center mb-3">
+                    <span class="register-icon"><i class="bi bi-leaf"></i></span>
+                    <h2 class="register-title">Company registration</h2>
+                    <p class="register-subtitle">Register to get started</p>
+                </div>
+                <?php
+                if (isset($_GET['error'])) {
+                    echo '<div class="alert alert-danger">';
+                    if ($_GET['error'] == 'emptyfields') {
+                        echo 'Please fill in all fields';
+                    } else if ($_GET['error'] == 'invalidemail') {
+                        echo 'Invalid email format';
+                    } else if ($_GET['error'] == 'emailtaken') {
+                        echo 'Email already taken';
+                    } else if ($_GET['error'] == 'sqlerror') {
+                        echo 'Database error occurred';
+                    } else if ($_GET['error'] == 'passwordMismatch') {
+                        echo 'Passwords do not match';
+                    }
+                    echo '</div>';
+                }
+                if (isset($_GET['success']) && $_GET['success'] == 'registered') {
+                    echo '<div class="alert alert-success">Registration successful!.</div>';
+                }
+                ?>
+                <form action="process_Cregister.php" method="POST">
+                    <div class="mb-2">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>" required>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="birthday" class="form-label">birthday</label>
+                        <input type="date" class="form-control" id="birthday" name="birthday" placeholder="Your birthday" value="<?php echo isset($_POST['birthday']) ? htmlspecialchars($_POST['birthday']) : ''; ?>" required>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="gender" class="form-label">Gender</label>
+                        <input type="text" class="form-control" id="gender" name="gender" placeholder="Your gender" value="<?php echo isset($_POST['gender']) ? htmlspecialchars($_POST['gender']) : ''; ?>" required>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="address" class="form-label">address</label>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Your address" value="<?php echo isset($_POST['address']) ? htmlspecialchars($_POST['address']) : ''; ?>" required>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="country" class="form-label">country</label>
+                        <input type="text" class="form-control" id="country" name="country" placeholder="Your country" value="<?php echo isset($_POST['country']) ? htmlspecialchars($_POST['country']) : ''; ?>" required>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="city" class="form-label">city</label>
+                        <input type="text" class="form-control" id="city" name="city" placeholder="Your city" value="<?php echo isset($_POST['city']) ? htmlspecialchars($_POST['city']) : ''; ?>" required>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="region" class="form-label">region</label>
+                        <input type="text" class="form-control" id="region" name="region" placeholder="Your region" value="<?php echo isset($_POST['region']) ? htmlspecialchars($_POST['region']) : ''; ?>" required>
+                    </div>
+                    <div class="d-grid mb-2">
+                        <button type="submit" class="btn btn-success">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
