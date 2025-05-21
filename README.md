@@ -83,3 +83,26 @@ $total = 0;
     </table>
 </div>
 <?php include '../includes/footer.php'; ?> 
+
+
+
+
+SELECT id, name, birthday, gender, address, country, city, region FROM your_table_name
+
+
+<td><?php echo htmlspecialchars($row['name']); ?></td>
+<td><?php echo htmlspecialchars($row['birthday']); ?></td>
+<td><?php echo htmlspecialchars($row['gender']); ?></td>
+<td><?php echo htmlspecialchars($row['address']); ?></td>
+<td><?php echo htmlspecialchars($row['country']); ?></td>
+<td><?php echo htmlspecialchars($row['city']); ?></td>
+<td><?php echo htmlspecialchars($row['region']); ?></td>
+
+<td>
+    <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm fw-medium px-3 shadow-sm">Edit</a>
+    <a href="remove_from_cart.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm fw-medium px-3 shadow-sm" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
+</td>
+
+
+
+
