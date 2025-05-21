@@ -60,3 +60,29 @@ $result = $stmt->get_result();
 </div>
 
 <?php include '../includes/footer.php'; ?>
+
+
+
+
+
+<?php
+require_once '../connection.php';
+
+if (!isset($_GET['id'])) {
+    header('Location: adminDash.php?message=Invalid+user+ID');
+    exit();
+}
+
+$id = intval($_GET['id']); // Convert to integer for safety
+
+// Prepared statement with WHERE clause
+$sql = "DELETE FROM user WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id); // "i" means integer
+
+if ($stmt->execute()) {
+    header('Location: adminDash.php?message=User+deleted+successfully');
+} else {
+    echo "Error deleting user: " . $conn->error;
+}
+?>
