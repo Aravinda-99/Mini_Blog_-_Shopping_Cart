@@ -103,6 +103,40 @@ SELECT id, name, birthday, gender, address, country, city, region FROM your_tabl
     <a href="remove_from_cart.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm fw-medium px-3 shadow-sm" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
 </td>
 
+<?php
+// Database connection
+$conn = new mysqli("localhost", "your_username", "your_password", "your_database");
 
+// Connection check
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// ID එක URL එකෙන් ගන්නවා
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = $_GET['id'];
+
+    // SQL DELETE query එක
+    $sql = "DELETE FROM your_table_name WHERE id = ?";
+
+    // Prepared statement එක භාවිතා කරන්න (SQL injection වලට ආරක්ෂාවක් ලබාදෙයි)
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+
+    if ($stmt->execute()) {
+        // Delete කිරීම සාර්ථකයි
+        header("Location: your_list_page.php?message=deleted");
+        exit();
+    } else {
+        echo "Error deleting record: " . $conn->error;
+    }
+
+    $stmt->close();
+} else {
+    echo "Invalid ID";
+}
+
+$conn->close();
+?>
 
 
