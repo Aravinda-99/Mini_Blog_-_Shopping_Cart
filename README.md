@@ -182,3 +182,61 @@ ensuring users are 21+.
         </div>
     </div>
 </div>
+
+
+
+
+<?php
+require_once '../connection.php';
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name     = trim($_POST['name']);
+    $birthday = trim($_POST['birthday']);
+    $gender   = trim($_POST['gender']);
+    $address  = trim($_POST['address']);
+    $country  = trim($_POST['country']);
+    $city     = trim($_POST['city']);
+    $region   = trim($_POST['region']);
+
+    // 1. Check for empty fields
+    if (empty($name) || empty($birthday) || empty($gender) || empty($address) || empty($country) || empty($city) || empty($region)) {
+        header("Location: register.php?error=emptyfields");
+        exit();
+    }
+
+    // 2. Validate birthday format (YYYY-MM-DD) and check if it's a valid date
+    $birthDate = DateTime::createFromFormat('Y-m-d', $birthday);
+    $birthErrors = DateTime::getLastErrors();
+
+    if (!$birthDate || $birthErrors['warning_count'] > 0 || $birthErrors['error_count'] > 0) {
+        header("Location: register.php?error=invaliddate");
+        exit();
+    }
+
+    // 3. Check if user is at least 21 years old
+    $today = new DateTime();
+    $age = $today->diff($birthDate)->y;
+
+    if ($age < 21) {
+        header("Location: register.php?error=underage");
+        exit();
+    }
+
+    // 4. If all valid, insert to DB (example query)
+    $stmt = $conn->prepare("INSERT INTO user (name, birthday, gender, address, country, city, region) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssss", $name, $birthday, $gender, $address, $country, $city, $region);
+
+    if ($stmt->execute()) {
+        header("Location: register.php?success=registered");
+    } else {
+        header("Location: register.php?error=sqlerror");
+    }
+
+    $stmt->close();
+    $conn->close();
+} else {
+    header("Location: register.php");
+    exit();
+}
+?>
