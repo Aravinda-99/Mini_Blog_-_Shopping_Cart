@@ -61,3 +61,32 @@ $total = 0;
 <?php include '../includes/footer.php'; ?> 
 
 create delete for this code <a href="remove_from_cart.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm fw-medium px-3 shadow-sm" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
+
+
+
+
+<?php
+require_once '../connection.php';
+
+if (!isset($_GET['id'])) {
+    // ID not provided
+    header('Location: ../admin/dashboard.php'); // redirect to dashboard or suitable page
+    exit();
+}
+
+$id = $_GET['id'];
+
+// Protect against SQL injection using prepared statements
+$sql = "DELETE FROM user WHERE id = ?";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id);
+
+if ($stmt->execute()) {
+    // Successfully deleted
+    header("Location: ../admin/dashboard.php?message=User+deleted+successfully");
+    exit();
+} else {
+    echo "Error deleting user: " . $conn->error;
+}
+?>
