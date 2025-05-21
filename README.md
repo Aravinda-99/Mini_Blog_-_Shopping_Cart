@@ -99,3 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: ../login/login.php");
     exit();
 }
+
+
+Design the system to handle form validation, including checking for valid dates and 
+ensuring users are 21+.
