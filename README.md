@@ -172,5 +172,39 @@ $total = 0;
 
 
 
+<div class="container mt-5">
+    <h2>Admin DashBoard</h2>
+
+    <form method="GET" class="mb-3">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search by name, city, or region" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
 
 
+<?php
+require_once '../connection.php';
+include '../includes/header.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../Login/login.php');
+    exit();
+}
+
+$search = isset($_GET['search']) ? '%' . $conn->real_escape_string($_GET['search']) . '%' : null;
+
+if ($search) {
+    $sql = "SELECT id, name, birthday, gender, address, country, city, region 
+            FROM user 
+            WHERE name LIKE ? OR city LIKE ? OR region LIKE ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('sss', $search, $search, $search);
+} else {
+    $sql = "SELECT id, name, birthday, gender, address, country, city, region FROM user";
+    $stmt = $conn->prepare($sql);
+}
+
+$stmt->execute();
+$result = $stmt->get_result();
+?>
